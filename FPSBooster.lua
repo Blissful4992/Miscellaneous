@@ -10,6 +10,7 @@ _G.Settings = _G.Settings or {
 if _G.Executed then warn("Already executed") return end
 if not _G then warn("Exploit not compatible") return end
 _G.Executed = true
+_G.Activated = false
 
 local Space = game:GetService("Workspace")
 local Lighting = game:GetService("Lighting")
@@ -21,7 +22,8 @@ local lightingAdded
 local GHP = gethiddenproperty and sethiddenproperty
 
 function _G.FPS_Boost(bool)
-    if (bool) then
+    _G.Activated = bool or not _G.Activated
+    if (_G.Activated) then
         local SETTINGS = _G.Settings
         savedStates = {
             BasePart = {};
